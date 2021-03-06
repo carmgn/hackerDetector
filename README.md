@@ -1,6 +1,7 @@
 # hackerDetector
 Technical exersice
 
+## Hacker detection system
 A system provided by a company allows customers to sign in using their username and
 password. There is a requirement for an automated system to be developed to help identify
 attempts to hack the system and compromise accounts. Activity log files are recorded and
@@ -20,7 +21,7 @@ The first detection method will be to identify a single IP address that has atte
 login 5 or more times within a 5 minute period. On detection you should return the suspicious IP.
 
 
-Time Calculation
+## Time Calculation
 Write a function that returns the number of minutes (rounded down) between two
 timestamps time1 and time2 in RFC 2822 format (ie: Thu, 21 Dec 2000 16:01:07 +0200).
 Don’t forget about the time zones.
