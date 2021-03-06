@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+}
+apply from: 'gradle/versions.gradle'
+group 'org.example'
+version projectVersion
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: jUnitVersion
+    testCompile group: 'com.tngtech.java', name: 'junit-dataprovider', version: '1.13.1'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: springBootVersion
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
+    implementation group: 'org.springframework.boot', name: 'spring-boot-devtools', version: springBootVersion
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+    compileOnly group: 'javax', name: 'javaee-api', version: javaeeVersion
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: springBootVersion
+    implementation group: 'com.h2database', name: 'h2', version: '1.4.200'
+
+}
