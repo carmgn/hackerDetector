@@ -40,5 +40,6 @@ gradlew bootRun
 
 POST method
 http://localhost:8080/hackerDetector/parseLog
-Body
+
+POST Body
 80.238.9.176,1615026083,SIGNIN_FAILURE,Will.Smith
