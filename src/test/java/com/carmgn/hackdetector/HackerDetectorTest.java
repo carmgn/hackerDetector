@@ -3,22 +3,24 @@ package com.carmgn.hackdetector;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
 
+import com.carmgn.hackdetector.configuration.HackerConfiguration;
 import com.carmgn.hackdetector.impl.HackerDetectorImpl;
 import com.tngtech.java.junit.dataprovider.DataProvider;
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
 import com.tngtech.java.junit.dataprovider.UseDataProvider;
 
 @RunWith(DataProviderRunner.class)
+@SpringBootTest(classes = HackerDetectorImpl.class)
 public class HackerDetectorTest {
 
-    private HackerDetectorImpl hackerDetector;
+    private  HackerDetectorImpl hackerDetector;
 
     @DataProvider
     public static Object[][] dataProviderHackerDetectorLog() {
@@ -122,10 +124,18 @@ public class HackerDetectorTest {
         };
     }
 
+    @Before
+    public void setup() {
+        hackerDetector = new HackerDetectorImpl();
+        HackerConfiguration configuration = new HackerConfiguration();
+        configuration.setAttemps(5);
+        hackerDetector.setConfiguration(configuration);
+    }
+
+
     @Test
     @UseDataProvider("dataProviderHackerDetectorLog")
     public void testDetect(ArrayList<String> lines, int hack) {
-        hackerDetector = new HackerDetectorImpl();
         HashSet<String> ipHackList = new HashSet<>();
         if(lines != null && !lines.isEmpty()) {
             for (String line : lines) {

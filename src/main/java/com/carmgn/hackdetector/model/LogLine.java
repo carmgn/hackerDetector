@@ -1,22 +1,10 @@
 package com.carmgn.hackdetector.model;
 
-import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
 @Data
 @Slf4j
-@Entity
-@Table(name = "logLine")
-@EntityListeners(AuditingEntityListener.class)
 public class LogLine {
 
     private static long TIME_MILLIS = 1000;
@@ -29,28 +17,25 @@ public class LogLine {
 
     private long logDate;
 
-    private Action action;
+    private Action action = Action.SIGNIN_SUCCESS;
 
     private String userName;
 
 
     public LogLine(String line) {
-        if (line == null || line.trim().isEmpty() || line.split(",").length != 4){
-            return;
-        }
         String[] lineSplited = line.split(",");
-        this.ip = lineSplited[0];
-        this.logDate = parseDate(lineSplited[1]);
-        this.action = parseAction(lineSplited[2]);
-        this.userName = lineSplited[3];
-    }
-
-    public LogLine() {
-    }
-
-    @Id
-    String getId() {
-        return ip;
+        if (lineSplited.length > 0) {
+            this.ip = lineSplited[0];
+        }
+        if (lineSplited.length > 1) {
+            this.logDate = parseDate(lineSplited[1]);
+        }
+        if (lineSplited.length > 2) {
+            this.action = parseAction(lineSplited[2]);
+        }
+        if (lineSplited.length > 3) {
+            this.userName = lineSplited[3];
+        }
     }
 
     private Action parseAction(String action) {
@@ -79,7 +64,4 @@ public class LogLine {
         return dateEpoch;
     }
 
-    void setId(String id) {
-        this.ip = id;
-    }
 }
