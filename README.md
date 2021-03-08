@@ -25,3 +25,20 @@ login 5 or more times within a 5 minute period. On detection you should return t
 Write a function that returns the number of minutes (rounded down) between two
 timestamps time1 and time2 in RFC 2822 format (ie: Thu, 21 Dec 2000 16:01:07 +0200).
 Don’t forget about the time zones.
+
+## Usage
+compile
+```bash
+gradlew clean build
+```
+Execute
+```bash
+gradlew bootRun
+```
+
+## API USE
+
+POST method
+http://localhost:8080/hackerDetector/parseLog
+Body
+80.238.9.176,1615026083,SIGNIN_FAILURE,Will.Smith

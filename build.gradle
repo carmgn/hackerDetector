@@ -1,10 +1,10 @@
 plugins {
     id 'java'
+    id "org.springframework.boot" version "2.0.1.RELEASE"
 }
 apply from: 'gradle/versions.gradle'
-group 'org.example'
+group 'com.carmgn.hackdetector'
 version projectVersion
-
 repositories {
     mavenCentral()
 }
@@ -24,3 +24,8 @@ dependencies {
     implementation group: 'de.codecentric', name: 'spring-boot-admin-starter-server', version: springBootAdminVersion
 
 }
+
+springBoot {
+    mainClassName = 'com.carmgn.hackdetector.Application'
+}
+
