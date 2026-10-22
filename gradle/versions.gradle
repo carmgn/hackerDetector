@@ -1,9 +1,0 @@
-ext {
-    projectVersion = '1.0-SNAPSHOT'
-    lombokVersion = '1.18.18'
-    jUnitVersion = '4.12'
-    springBootVersion = '2.1.9.RELEASE'
-    springBootAdminVersion = '2.1.6'
-    javaeeVersion = "8.0"
-    dataProviderVersion = '1.13.1'
-}

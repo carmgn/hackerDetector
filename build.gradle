@@ -1,31 +1,31 @@
 plugins {
     id 'java'
-    id "org.springframework.boot" version "2.0.1.RELEASE"
+    id 'org.springframework.boot' version '3.3.5'
+    id 'io.spring.dependency-management' version '1.1.6'
 }
-apply from: 'gradle/versions.gradle'
-group 'com.carmgn.hackdetector'
-version projectVersion
+
+group = 'com.carmgn'
+version = '2.0.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: jUnitVersion
-    testCompile group: 'com.tngtech.java', name: 'junit-dataprovider', version: dataProviderVersion
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: springBootVersion
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
-    implementation group: 'org.springframework.boot', name: 'spring-boot-devtools', version: springBootVersion
-    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
-    compileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVersion
-    compileOnly group: 'javax', name: 'javaee-api', version: javaeeVersion
-    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: lombokVersion
-    annotationProcessor group: 'org.springframework.boot', name: 'spring-boot-configuration-processor', version: springBootVersion
-    implementation group: 'de.codecentric', name: 'spring-boot-admin-starter-client', version: springBootAdminVersion
-    implementation group: 'de.codecentric', name: 'spring-boot-admin-starter-server', version: springBootAdminVersion
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
-springBoot {
-    mainClassName = 'com.carmgn.hackdetector.Application'
+tasks.named('test') {
+    useJUnitPlatform()
 }
-
