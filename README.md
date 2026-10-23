@@ -73,3 +73,7 @@ Health check: `GET /actuator/health`.
 | Hard-coded rule | Threshold and window in configuration, validated at startup |
 | Always `200`, empty body when normal | `200` with the IP, or `204` |
 | JUnit 4 + junit-dataprovider | JUnit 5 parameterized tests, a concurrency test and a MockMvc test |
+
+## Author
+
+Carmelo García · [Portfolio: www.carmgn.eu](https://www.carmgn.eu) · [LinkedIn](https://www.linkedin.com/in/carmgn)
